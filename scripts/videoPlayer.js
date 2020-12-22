@@ -5,9 +5,14 @@ export const videoPlayerInit = () => {
     const videoProgress = document.querySelector('.video-progress');
     const videoTimePassed = document.querySelector('.video-time__passed');
     const videoTimeTotal = document.querySelector('.video-time__total');
+    const videoVolume = document.querySelector('.video-volume');
+    const videoFullscreen = document.querySelector('.video-fullscreen');
+    const volumeOff = document.querySelector('.fa-volume-off');
+    const volumeUp = document.querySelector('.fa-volume-up');
+    let temp;
 
     const toggleIcon = () => {
-        if(videoPlayer.paused){
+        if (videoPlayer.paused) {
             videoBtnPlay.classList.remove('fa-pause');
             videoBtnPlay.classList.add('fa-play');
         } else {
@@ -15,18 +20,51 @@ export const videoPlayerInit = () => {
             videoBtnPlay.classList.remove('fa-play');
         }
     }
-    const togglePlay = () => {
-        if(videoPlayer.paused){
+    const togglePlay = (e) => {
+        e.preventDefault();
+        if (videoPlayer.paused) {
             videoPlayer.play();
         } else {
             videoPlayer.pause();
         }
     }
     const stopPlay = () => {
-            videoPlayer.pause();
-            videoPlayer.currentTime = 0;
+        videoPlayer.pause();
+        videoPlayer.currentTime = 0;
     }
     const addZero = n => n < 10 ? '0' + n : n;
+    const opacityVolume = () => {
+        if (!videoPlayer.volume) {
+            videoVolume.style.opacity = '0.5';
+        } else {
+            videoVolume.style.opacity = '1';
+        }
+    }
+    const changeVolume = () => {
+        videoPlayer.muted = false;
+        const value = videoVolume.value;
+        videoPlayer.volume = value / 100;
+        opacityVolume();
+    }
+    const changeVolumeOff = () => {
+        videoPlayer.muted = false;
+        if (videoPlayer.volume !== 0) {
+            temp = videoPlayer.volume;
+            videoPlayer.volume = 0;
+        } else {
+            videoPlayer.volume = temp;
+        }
+        opacityVolume();
+    }
+    const changeVolumeMax = () => {
+        videoPlayer.muted = false;
+        if (videoPlayer.volume !== 1) {
+            temp = videoPlayer.volume;
+            videoPlayer.volume = 1;
+        } else {
+            videoPlayer.volume = temp;
+        }
+    }
 
     videoPlayer.addEventListener('click', togglePlay);
     videoBtnPlay.addEventListener('click', togglePlay);
@@ -45,9 +83,27 @@ export const videoPlayerInit = () => {
         videoTimeTotal.textContent = `${addZero(minuteTotal)}:${addZero(secondsTotal)}`;
         videoProgress.value = (currentTime / duration) * 100;
     });
-    videoProgress.addEventListener('change', () => {
+    videoProgress.addEventListener('input', () => {
         const duration = videoPlayer.duration;
         const value = videoProgress.value;
         videoPlayer.currentTime = value * duration / 100;
     })
+    videoVolume.addEventListener('input', changeVolume);
+    videoFullscreen.addEventListener('click', () => {
+        videoPlayer.requestFullscreen();
+    });
+    videoPlayer.addEventListener('volumechange', () => {
+        videoVolume.value = videoPlayer.volume * 100;
+        opacityVolume();
+        if (videoPlayer.muted) {
+            videoVolume.value = 0;
+            videoVolume.style.opacity = '0.5';
+        }
+    });
+    volumeOff.addEventListener('click', changeVolumeOff);
+    volumeUp.addEventListener('click', changeVolumeMax);
+
+    changeVolume();
+
 }
+
