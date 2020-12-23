@@ -7,8 +7,8 @@ export const videoPlayerInit = () => {
     const videoTimeTotal = document.querySelector('.video-time__total');
     const videoVolume = document.querySelector('.video-volume');
     const videoFullscreen = document.querySelector('.video-fullscreen');
-    const volumeOff = document.querySelector('.fa-volume-off');
-    const volumeUp = document.querySelector('.fa-volume-up');
+    const volumeOff = document.querySelector('.video-volume-off');
+    const volumeUp = document.querySelector('.video-volume-up');
     let temp;
 
     const toggleIcon = () => {

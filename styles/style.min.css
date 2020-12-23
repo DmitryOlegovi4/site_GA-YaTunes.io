@@ -352,12 +352,13 @@ main {
     background-color: transparent;
     border: none;
     font-size: 56px;
-    color: #fff
+    color: #fff;
+    margin-right: 20px;
 }
 
 .radio-stop:disabled {
     color: #aaa;
-    opacity: .3
+    opacity: .3;
 }
 
 .audio {
@@ -757,5 +758,12 @@ input[type=range]:focus::-ms-fill-upper {
 .video-fullscreen, .fa-volume-off, .fa-volume-up {
     cursor: pointer;
 }
+.audio-volume {
+    max-width: 100px;
+}
 
+.audio-icon {
+    margin: 0 5px;
+    font-size: 36px;
+}
 /*# sourceMappingURL=style.min.css.map */

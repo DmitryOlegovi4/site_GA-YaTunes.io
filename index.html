@@ -60,9 +60,9 @@
 						<input type="range" class="video-progress" min="0" max="100" step="0.1" value="0">
 						<p class="video-time video-time__total">00:00</p>
 <!--						<span class="fa fa-volume-down video-icon"></span>-->
-						<span class="fa fa-volume-off video-icon"></span>
+						<span class="fa fa-volume-off video-icon video-volume-off"></span>
 						<input type="range" class="video-volume" min="0" max="100" step="1" value="30">
-						<span class="fa fa-volume-up video-icon"></span>
+						<span class="fa fa-volume-up video-icon video-volume-up"></span>
 						<span class="fa fa-window-maximize video-icon video-fullscreen"></span>
 					</nav>
 				</div>
@@ -114,7 +114,7 @@
 										<img class="radio-img" src="radio/RTLGroove.png" alt="обложка">
 									</div>
 									<input class="radio-btn" type="radio" id="RTLGroove" name="radioStantion"
-											data-radio-stantion="http://shoutcast.rtl.it:3040/">
+											data-radio-stantion="https://streamingv2.shoutcast.com/rtl-1025-broandsis">
 									<span class="radio-name">RTL Groove</span>
 								</label>
 							</li>
@@ -125,7 +125,7 @@
 										<img class="radio-img" src="radio/Energy.png" alt="обложка">
 									</div>
 									<input class="radio-btn" type="radio" id="energy" name="radioStantion"
-											data-radio-stantion="http://ic4.101.ru:8000/region_energy_161">
+											data-radio-stantion="https://pub0201.101.ru/stream/reg/mp3/128/region_energy_55">
 									<span class="radio-name">Energy</span>
 								</label>
 							</li>
@@ -180,6 +180,9 @@
 			</div>
 			<footer class="footer-fix radio-footer">
 				<button class="radio-stop fa fa-play"></button>
+				<span class="fa fa-volume-off audio-icon audio-volume-off"></span>
+				<input type="range" class="audio-volume" min="0" max="100" step="1" value="40">
+				<span class="fa fa-volume-up audio-icon audio-volume-up"></span>
 			</footer>
 		</article>
 	</main>
