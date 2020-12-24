@@ -1,3 +1,5 @@
+import {addZero} from "./supScript.js";
+
 export const videoPlayerInit = () => {
     const videoPlayer = document.querySelector('.video-player');
     const videoBtnPlay = document.querySelector('.video-button__play');
@@ -32,7 +34,6 @@ export const videoPlayerInit = () => {
         videoPlayer.pause();
         videoPlayer.currentTime = 0;
     }
-    const addZero = n => n < 10 ? '0' + n : n;
     const opacityVolume = () => {
         if (!videoPlayer.volume) {
             videoVolume.style.opacity = '0.5';
@@ -104,6 +105,13 @@ export const videoPlayerInit = () => {
     volumeUp.addEventListener('click', changeVolumeMax);
 
     changeVolume();
+
+
+    const playerBtn = document.querySelectorAll('.player-btn');
+    playerBtn.forEach((btn, i) => btn.addEventListener('click', () => {
+        videoPlayer.pause();
+        })
+    );
 
 }
 

@@ -79,4 +79,10 @@ export const radioPlayerInit = () => {
     });
 
     changeVolume();
+
+    const playerBtn = document.querySelectorAll('.player-btn');
+    playerBtn.forEach((btn, i) => btn.addEventListener('click', () => {
+            audio.pause();
+        })
+    );
 }
